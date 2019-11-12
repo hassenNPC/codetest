@@ -1,8 +1,82 @@
 <!DOCTYPE html>
 <html>
 	<head>
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
 	</head>
 	<body>
-		<h1>Hello world!</h1>
+  
+
+  <% if @result==nil %>
+        <% @result="" %>
+  <% end %>
+  <% if @caution==nil %>
+        <% @caution="" %>
+  <% end %>
+  <% if @message==nil %>
+        <% @message="please enter the amount and click change." %>
+  <% end %>
+
+
+
+ 
+ <div class="testbox">
+
+      <form action="/result">
+        <div class="banner">
+          <h1>EXCHANGE COIN APPLICATION</h1>
+        </div>
+        <div class="item">
+          <p class="instruction">Amount to exchange</p><br> 
+          <div class="name-item">
+            <input type="text" name="fromvalue"  />
+         
+          </div>
+        </div>
+    <div>
+         <div> <p >Choose your exchange target </p></div><br>
+
+          <div class="question-answer">
+            <select name ="exchange" >
+              <option value="0">From euro to dollar</option>
+              <option value="1">From dollar to euro</option>
+       
+            </select>
+            
+          </div>
+        </div>
+        <br>
+  <% if @result=="" %>
+        <p style="color: red"><%= @caution %> </p>
+        <p><%= @message %><br> 
+          <%= @result %></p>
+  <% else %>   
+        
+        <p><%= @message %><br> 
+          <%= @result %></p>  
+  <% end %>
+
+    <br>
+
+        <div class="btn-block">
+          <button method="get" type="submit" href="/result">Exchange</button>
+           <button type ="button" method="get" onclick="window.location.href = './history';"  >See History</button>
+        </div>
+
+
+
+  </form>
+
+ 
+    </div>
+
+  </div>
+
+
+
+
+
 	</body>
 </html>
